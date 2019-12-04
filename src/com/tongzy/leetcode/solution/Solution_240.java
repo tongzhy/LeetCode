@@ -161,6 +161,30 @@ public class Solution_240 {
     Memory Usage: 42.7 MB, less than 100.00% of Java online submissions for Search a 2D Matrix II.
 */
 
+    public boolean searchMatrix6(int[][] matrix, int target) {
+        if (matrix == null || matrix.length == 0) {
+            return false;
+        }
+        int i = matrix.length - 1;
+        int j = 0;
+
+        while (i >= 0 && j >= 0 && i < matrix.length && j < matrix[0].length) {
+            if (matrix[i][j] == target) {
+                return true;
+            } else if (target > matrix[i][j]) {
+                j++;
+            } else {
+                // target < matrix[i][j]
+                i--;
+            }
+        }
+        return false;
+    }
+/*
+    Runtime: 5 ms, faster than 100.00% of Java online submissions for Search a 2D Matrix II.
+    Memory Usage: 42.8 MB, less than 100.00% of Java online submissions for Search a 2D Matrix II.
+*/
+
     public static void main(String[] args) {
         int[][] matrix = new int[5][5];
         int num = 1;
@@ -171,7 +195,7 @@ public class Solution_240 {
         }
         Solution_240 solution = new Solution_240();
         for (int i = 0; i < 30; i++) {
-            System.out.println(i + "  " + solution.searchMatrix4(matrix, i));
+            System.out.println(i + "  " + solution.searchMatrix6(matrix, i));
         }
     }
 }
