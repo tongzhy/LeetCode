@@ -75,6 +75,25 @@ public class Solution_240 {
     Memory Usage: 43.6 MB, less than 98.11% of Java online submissions for Search a 2D Matrix II.
 */
 
+    public boolean searchMatrix3(int[][] matrix, int target) {
+        int rows = matrix.length;
+        if (rows == 0) return false;
+        int columns = matrix[0].length;
+        if (columns == 0) return false;
+        for (int m = 0; m < rows; m++) {
+            if (target < matrix[m][0] || target > matrix[m][columns - 1]) {
+                continue;
+            }
+            if (Arrays.binarySearch(matrix[m], target) >= 0)
+                return true;
+        }
+        return false;
+    }
+/*
+    Runtime: 6 ms, faster than 31.56% of Java online submissions for Search a 2D Matrix II.
+    Memory Usage: 42.5 MB, less than 100.00% of Java online submissions for Search a 2D Matrix II.
+*/
+
     public static void main(String[] args) {
         int[][] matrix = new int[5][5];
         int num = 1;
@@ -85,7 +104,7 @@ public class Solution_240 {
         }
         Solution_240 solution = new Solution_240();
         for (int i = 0; i < 30; i++) {
-            System.out.println(i + "  " + solution.searchMatrix2(matrix, i));
+            System.out.println(i + "  " + solution.searchMatrix3(matrix, i));
         }
     }
 }
