@@ -110,6 +110,7 @@ public class Solution_240 {
                 break;
             }
         }
+        // not effective
         for (int m = top; m <= bottom; m++) {
             if (Arrays.binarySearch(matrix[m], target) >= 0)
                 return true;
@@ -119,6 +120,45 @@ public class Solution_240 {
 /*
     Runtime: 6 ms, faster than 31.56% of Java online submissions for Search a 2D Matrix II.
     Memory Usage: 41.9 MB, less than 100.00% of Java online submissions for Search a 2D Matrix II.
+*/
+
+    public boolean searchMatrix5(int[][] matrix, int target) {
+        int rows = matrix.length;
+        if (rows == 0) return false;
+        int columns = matrix[0].length;
+        if (columns == 0) return false;
+        int left = 0, right = rows - 1;
+        int bottom = rows - 1;
+        while (left < right) {
+            int mid = (left + right + 1) / 2;
+            if (target < matrix[mid][0]) {
+                right = mid - 1;
+                bottom = right;
+            } else {
+                left = mid;
+            }
+        }
+        int top = 0;
+        left = 0;
+        right = rows - 1;
+        while (left < right) {
+            int mid = (left + right) / 2;
+            if (target > matrix[mid][columns - 1]) {
+                left = mid + 1;
+                top = left;
+            } else {
+                right = mid;
+            }
+        }
+        for (int m = top; m <= bottom; m++) {
+            if (Arrays.binarySearch(matrix[m], target) >= 0)
+                return true;
+        }
+        return false;
+    }
+/*
+    Runtime: 6 ms, faster than 31.56% of Java online submissions for Search a 2D Matrix II.
+    Memory Usage: 42.7 MB, less than 100.00% of Java online submissions for Search a 2D Matrix II.
 */
 
     public static void main(String[] args) {
