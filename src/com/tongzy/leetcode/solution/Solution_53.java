@@ -41,10 +41,10 @@ public class Solution_53 {
 */
 
     /**
-     * ×÷Õß£ºguanpengchn
-     * Á´½Ó£ºhttps://leetcode-cn.com/problems/maximum-subarray/solution/hua-jie-suan-fa-53-zui-da-zi-xu-he-by-guanpengchn/
-     * À´Ô´£ºÁ¦¿Û£¨LeetCode£©
-     * Öø×÷È¨¹é×÷ÕßËùÓĞ¡£ÉÌÒµ×ªÔØÇëÁªÏµ×÷Õß»ñµÃÊÚÈ¨£¬·ÇÉÌÒµ×ªÔØÇë×¢Ã÷³ö´¦¡£
+     * ä½œè€…ï¼šguanpengchn
+     * é“¾æ¥ï¼šhttps://leetcode-cn.com/problems/maximum-subarray/solution/hua-jie-suan-fa-53-zui-da-zi-xu-he-by-guanpengchn/
+     * æ¥æºï¼šåŠ›æ‰£ï¼ˆLeetCodeï¼‰
+     * è‘—ä½œæƒå½’ä½œè€…æ‰€æœ‰ã€‚å•†ä¸šè½¬è½½è¯·è”ç³»ä½œè€…è·å¾—æˆæƒï¼Œéå•†ä¸šè½¬è½½è¯·æ³¨æ˜å‡ºå¤„ã€‚
      */
     public int maxSubArray2(int[] nums) {
         int ans = nums[0];

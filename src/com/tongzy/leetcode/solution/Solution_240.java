@@ -7,10 +7,10 @@ import java.util.Arrays;
  */
 public class Solution_240 {
     public boolean searchMatrix(int[][] matrix, int target) {
-        int m = matrix.length; //mÐÐ
+        int m = matrix.length; //mè¡Œ
         if (m == 0)
             return false;
-        int n = matrix[0].length; //nÁÐ
+        int n = matrix[0].length; //nåˆ—
         return binarySearch(matrix, target, 0, m - 1, 0, n - 1);
     }
 

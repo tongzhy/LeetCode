@@ -10,8 +10,8 @@ import java.io.InputStreamReader;
 /**
  * Reorder List
  * <p>
- * Given a singly linked list L: L0¡úL1¡ú¡­¡úLn-1¡úLn,
- * reorder it to: L0¡úLn¡úL1¡úLn-1¡úL2¡úLn-2¡ú¡­
+ * Given a singly linked list L: L0â†’L1â†’â€¦â†’Ln-1â†’Ln,
+ * reorder it to: L0â†’Lnâ†’L1â†’Ln-1â†’L2â†’Ln-2â†’â€¦
  * <p>
  * You may not modify the values in the list's nodes, only nodes itself may be changed.
  * <p>
@@ -72,7 +72,7 @@ public class Solution_143 {
 
         String result = "";
         while (node != null) {
-            result += Integer.toString(node.val) + ", ";
+            result += node.val + ", ";
             node = node.next;
         }
         return "[" + result.substring(0, result.length() - 2) + "]";

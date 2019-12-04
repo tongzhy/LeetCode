@@ -16,7 +16,7 @@ import java.util.List;
  * Output: [1,2,3,4]
  * Explanation: 1200 + 34 = 1234
  * <p>
- * Note£º
+ * Noteï¼š
  * <p>
  * 1 <= A.length <= 10000
  * 0 <= A[i] <= 9

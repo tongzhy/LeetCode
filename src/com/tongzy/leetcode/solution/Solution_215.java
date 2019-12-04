@@ -18,7 +18,7 @@ import java.util.PriorityQueue;
  * Input: [3,2,3,1,2,4,5,5,6] and k = 4
  * Output: 4
  * Note:
- * You may assume k is always valid, 1 ¡Ü k ¡Ü array's length.
+ * You may assume k is always valid, 1 â‰¤ k â‰¤ array's length.
  */
 public class Solution_215 {
     public int findKthLargest(int[] nums, int k) {

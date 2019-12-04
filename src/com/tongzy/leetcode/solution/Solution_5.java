@@ -3,57 +3,57 @@ package com.tongzy.leetcode.solution;
 public class Solution_5 {
 
     public String longestPalindrome(String s) {
-        // ÌØÅĞ
+        // ç‰¹åˆ¤
         int len = s.length();
         if (len < 2) {
             return s;
         }
 
-        // µÃµ½Ô¤´¦Àí×Ö·û´®
+        // å¾—åˆ°é¢„å¤„ç†å­—ç¬¦ä¸²
         String str = addBoundaries(s, '#');
-        // ĞÂ×Ö·û´®µÄ³¤¶È
+        // æ–°å­—ç¬¦ä¸²çš„é•¿åº¦
         int sLen = 2 * len + 1;
 
-        // Êı×é p ¼ÇÂ¼ÁËÉ¨Ãè¹ıµÄ»ØÎÄ×Ó´®µÄĞÅÏ¢
+        // æ•°ç»„ p è®°å½•äº†æ‰«æè¿‡çš„å›æ–‡å­ä¸²çš„ä¿¡æ¯
         int[] p = new int[sLen];
 
-        // Ë«Ö¸Õë£¬ËüÃÇÊÇÒ»Ò»¶ÔÓ¦µÄ£¬ĞëÍ¬Ê±¸üĞÂ
+        // åŒæŒ‡é’ˆï¼Œå®ƒä»¬æ˜¯ä¸€ä¸€å¯¹åº”çš„ï¼Œé¡»åŒæ—¶æ›´æ–°
         int maxRight = 0;
         int center = 0;
 
-        // µ±Ç°±éÀúµÄÖĞĞÄ×î´óÀ©É¢²½Êı£¬ÆäÖµµÈÓÚÔ­Ê¼×Ö·û´®µÄ×î³¤»ØÎÄ×Ó´®µÄ³¤¶È
+        // å½“å‰éå†çš„ä¸­å¿ƒæœ€å¤§æ‰©æ•£æ­¥æ•°ï¼Œå…¶å€¼ç­‰äºåŸå§‹å­—ç¬¦ä¸²çš„æœ€é•¿å›æ–‡å­ä¸²çš„é•¿åº¦
         int maxLen = 1;
-        // Ô­Ê¼×Ö·û´®µÄ×î³¤»ØÎÄ×Ó´®µÄÆğÊ¼Î»ÖÃ£¬Óë maxLen ±ØĞëÍ¬Ê±¸üĞÂ
+        // åŸå§‹å­—ç¬¦ä¸²çš„æœ€é•¿å›æ–‡å­ä¸²çš„èµ·å§‹ä½ç½®ï¼Œä¸ maxLen å¿…é¡»åŒæ—¶æ›´æ–°
         int start = 0;
 
         for (int i = 0; i < sLen; i++) {
             if (i < maxRight) {
                 int mirror = 2 * center - i;
-                // ÕâÒ»ĞĞ´úÂëÊÇ Manacher Ëã·¨µÄ¹Ø¼üËùÔÚ£¬Òª½áºÏÍ¼ĞÎÀ´Àí½â
+                // è¿™ä¸€è¡Œä»£ç æ˜¯ Manacher ç®—æ³•çš„å…³é”®æ‰€åœ¨ï¼Œè¦ç»“åˆå›¾å½¢æ¥ç†è§£
                 p[i] = Math.min(maxRight - i, p[mirror]);
             }
 
-            // ÏÂÒ»´Î³¢ÊÔÀ©É¢µÄ×óÓÒÆğµã£¬ÄÜÀ©É¢µÄ²½ÊıÖ±½Ó¼Óµ½ p[i] ÖĞ
+            // ä¸‹ä¸€æ¬¡å°è¯•æ‰©æ•£çš„å·¦å³èµ·ç‚¹ï¼Œèƒ½æ‰©æ•£çš„æ­¥æ•°ç›´æ¥åŠ åˆ° p[i] ä¸­
             int left = i - (1 + p[i]);
             int right = i + (1 + p[i]);
 
-            // left >= 0 && right < sLen ±£Ö¤²»Ô½½ç
-            // str.charAt(left) == str.charAt(right) ±íÊ¾¿ÉÒÔÀ©É¢ 1 ´Î
+            // left >= 0 && right < sLen ä¿è¯ä¸è¶Šç•Œ
+            // str.charAt(left) == str.charAt(right) è¡¨ç¤ºå¯ä»¥æ‰©æ•£ 1 æ¬¡
             while (left >= 0 && right < sLen && str.charAt(left) == str.charAt(right)) {
                 p[i]++;
                 left--;
                 right++;
 
             }
-            // ¸ù¾İ maxRight µÄ¶¨Òå£¬ËüÊÇ±éÀú¹ıµÄ i µÄ i + p[i] µÄ×î´óÕß
-            // Èç¹û maxRight µÄÖµÔ½´ó£¬½øÈëÉÏÃæ i < maxRight µÄÅĞ¶ÏµÄ¿ÉÄÜĞÔ¾ÍÔ½´ó£¬ÕâÑù¾Í¿ÉÒÔÖØ¸´ÀûÓÃÖ®Ç°ÅĞ¶Ï¹ıµÄ»ØÎÄĞÅÏ¢ÁË
+            // æ ¹æ® maxRight çš„å®šä¹‰ï¼Œå®ƒæ˜¯éå†è¿‡çš„ i çš„ i + p[i] çš„æœ€å¤§è€…
+            // å¦‚æœ maxRight çš„å€¼è¶Šå¤§ï¼Œè¿›å…¥ä¸Šé¢ i < maxRight çš„åˆ¤æ–­çš„å¯èƒ½æ€§å°±è¶Šå¤§ï¼Œè¿™æ ·å°±å¯ä»¥é‡å¤åˆ©ç”¨ä¹‹å‰åˆ¤æ–­è¿‡çš„å›æ–‡ä¿¡æ¯äº†
             if (i + p[i] > maxRight) {
-                // maxRight ºÍ center ĞèÒªÍ¬Ê±¸üĞÂ
+                // maxRight å’Œ center éœ€è¦åŒæ—¶æ›´æ–°
                 maxRight = i + p[i];
                 center = i;
             }
             if (p[i] > maxLen) {
-                // ¼ÇÂ¼×î³¤»ØÎÄ×Ó´®µÄ³¤¶ÈºÍÏàÓ¦ËüÔÚÔ­Ê¼×Ö·û´®ÖĞµÄÆğµã
+                // è®°å½•æœ€é•¿å›æ–‡å­ä¸²çš„é•¿åº¦å’Œç›¸åº”å®ƒåœ¨åŸå§‹å­—ç¬¦ä¸²ä¸­çš„èµ·ç‚¹
                 maxLen = p[i];
                 start = (i - maxLen) / 2;
             }
@@ -63,11 +63,11 @@ public class Solution_5 {
 
 
     /**
-     * ´´½¨Ô¤´¦Àí×Ö·û´®
+     * åˆ›å»ºé¢„å¤„ç†å­—ç¬¦ä¸²
      *
-     * @param s      Ô­Ê¼×Ö·û´®
-     * @param divide ·Ö¸ô×Ö·û
-     * @return Ê¹ÓÃ·Ö¸ô×Ö·û´¦ÀíÒÔºóµÃµ½µÄ×Ö·û´®
+     * @param s      åŸå§‹å­—ç¬¦ä¸²
+     * @param divide åˆ†éš”å­—ç¬¦
+     * @return ä½¿ç”¨åˆ†éš”å­—ç¬¦å¤„ç†ä»¥åå¾—åˆ°çš„å­—ç¬¦ä¸²
      */
     private String addBoundaries(String s, char divide) {
         int len = s.length();
@@ -75,7 +75,7 @@ public class Solution_5 {
             return "";
         }
         if (s.indexOf(divide) != -1) {
-            throw new IllegalArgumentException("²ÎÊı´íÎó£¬Äú´«µİµÄ·Ö¸î×Ö·û£¬ÔÚÊäÈë×Ö·û´®ÖĞ´æÔÚ£¡");
+            throw new IllegalArgumentException("å‚æ•°é”™è¯¯ï¼Œæ‚¨ä¼ é€’çš„åˆ†å‰²å­—ç¬¦ï¼Œåœ¨è¾“å…¥å­—ç¬¦ä¸²ä¸­å­˜åœ¨ï¼");
         }
         StringBuilder stringBuilder = new StringBuilder();
         for (int i = 0; i < len; i++) {

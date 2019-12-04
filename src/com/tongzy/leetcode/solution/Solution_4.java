@@ -143,10 +143,10 @@ public class Solution_4 {
     }
 
     /**
-     * ×÷Õß£ºpowcai
-     * Á´½Ó£ºhttps://leetcode-cn.com/problems/median-of-two-sorted-arrays/solution/shuang-zhi-zhen-by-powcai/
-     * À´Ô´£ºÁ¦¿Û£¨LeetCode£©
-     * Öø×÷È¨¹é×÷ÕßËùÓÐ¡£ÉÌÒµ×ªÔØÇëÁªÏµ×÷Õß»ñµÃÊÚÈ¨£¬·ÇÉÌÒµ×ªÔØÇë×¢Ã÷³ö´¦¡£
+     * ä½œè€…ï¼špowcai
+     * é“¾æŽ¥ï¼šhttps://leetcode-cn.com/problems/median-of-two-sorted-arrays/solution/shuang-zhi-zhen-by-powcai/
+     * æ¥æºï¼šåŠ›æ‰£ï¼ˆLeetCodeï¼‰
+     * è‘—ä½œæƒå½’ä½œè€…æ‰€æœ‰ã€‚å•†ä¸šè½¬è½½è¯·è”ç³»ä½œè€…èŽ·å¾—æŽˆæƒï¼Œéžå•†ä¸šè½¬è½½è¯·æ³¨æ˜Žå‡ºå¤„ã€‚
      */
     public double findMedian(int[] nums1, int[] nums2) {
         int n1 = nums1.length;
@@ -179,7 +179,7 @@ public class Solution_4 {
 
     class Solution {
         /**
-         * ¶þ·Ö²éÕÒ£¬µÚKÐ¡ O(log(min(m,n)))
+         * äºŒåˆ†æŸ¥æ‰¾ï¼Œç¬¬Kå° O(log(min(m,n)))
          */
         public double findMedianSortedArrays(int[] nums1, int[] nums2) {
             if (nums1.length > nums2.length) {

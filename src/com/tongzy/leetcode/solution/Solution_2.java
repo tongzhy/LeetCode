@@ -40,6 +40,6 @@ public class Solution_2 {
 }
 
 /*
-Runtime: 1 ms, faster than 99.99% of Java online submissions for Add Two Numbers.
-        Memory Usage: 43.3 MB, less than 88.40% of Java online submissions for Add Two Numbers.
+    Runtime: 1 ms, faster than 99.99% of Java online submissions for Add Two Numbers.
+    Memory Usage: 43.3 MB, less than 88.40% of Java online submissions for Add Two Numbers.
 */
