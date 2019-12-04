@@ -4,24 +4,24 @@ import java.util.Arrays;
 
 /**
  * 240. Search a 2D Matrix II
- *
+ * <p>
  * Write an efficient algorithm that searches for a value in an m x n matrix. This matrix has the following properties:
- *
+ * <p>
  * Integers in each row are sorted in ascending from left to right.
  * Integers in each column are sorted in ascending from top to bottom.
  * Example:
- *
+ * <p>
  * Consider the following matrix:
- *
+ * <p>
  * [
- *   [1,   4,  7, 11, 15],
- *   [2,   5,  8, 12, 19],
- *   [3,   6,  9, 16, 22],
- *   [10, 13, 14, 17, 24],
- *   [18, 21, 23, 26, 30]
+ * [1,   4,  7, 11, 15],
+ * [2,   5,  8, 12, 19],
+ * [3,   6,  9, 16, 22],
+ * [10, 13, 14, 17, 24],
+ * [18, 21, 23, 26, 30]
  * ]
  * Given target = 5, return true.
- *
+ * <p>
  * Given target = 20, return false.
  */
 public class Solution_240 {
@@ -60,6 +60,21 @@ public class Solution_240 {
     Memory Usage: 42.7 MB, less than 100.00% of Java online submissions for Search a 2D Matrix II.
 */
 
+    public boolean searchMatrix2(int[][] matrix, int target) {
+        int rows = matrix.length;
+        if (rows == 0) return false;
+        int columns = matrix[0].length;
+        for (int m = 0; m < rows; m++) {
+            if (Arrays.binarySearch(matrix[m], target) >= 0)
+                return true;
+        }
+        return false;
+    }
+/*
+    Runtime: 6 ms, faster than 31.56% of Java online submissions for Search a 2D Matrix II.
+    Memory Usage: 43.6 MB, less than 98.11% of Java online submissions for Search a 2D Matrix II.
+*/
+
     public static void main(String[] args) {
         int[][] matrix = new int[5][5];
         int num = 1;
@@ -70,7 +85,7 @@ public class Solution_240 {
         }
         Solution_240 solution = new Solution_240();
         for (int i = 0; i < 30; i++) {
-            System.out.println(i+"  "+solution.searchMatrix(matrix, i));
+            System.out.println(i + "  " + solution.searchMatrix2(matrix, i));
         }
     }
 }
