@@ -29,7 +29,7 @@ import java.text.DecimalFormat;
  * <p>
  * The median is (2 + 3)/2 = 2.5
  */
-public class Solution_4 {
+public class S4_Median_of_Two_Sorted_Arrays {
 
     public double findMedianSortedArrays(int[] nums1, int[] nums2) {
         return method(nums1, 0, nums1.length - 1, nums2, 0, nums2.length - 1);
@@ -97,7 +97,7 @@ public class Solution_4 {
             line = in.readLine();
             int[] nums2 = StringUtil.stringToIntegerArray(line);
 
-            double ret = new Solution_4().findMedianSortedArrays(nums1, nums2);
+            double ret = new S4_Median_of_Two_Sorted_Arrays().findMedianSortedArrays(nums1, nums2);
 
             String out = doubleToString(ret);
 

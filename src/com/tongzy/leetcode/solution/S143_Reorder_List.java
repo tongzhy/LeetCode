@@ -19,7 +19,7 @@ import java.io.InputStreamReader;
  * <p>
  * Given 1->2->3->4, reorder it to 1->4->2->3.
  */
-public class Solution_143 {
+public class S143_Reorder_List {
     public void reorderList(ListNode head) {
         if (head == null)
             return;
@@ -84,7 +84,7 @@ public class Solution_143 {
         while ((line = in.readLine()) != null) {
             ListNode head = stringToListNode(line);
 
-            new Solution_143().reorderList(head);
+            new S143_Reorder_List().reorderList(head);
             String out = listNodeToString(head);
 
             System.out.print(out);

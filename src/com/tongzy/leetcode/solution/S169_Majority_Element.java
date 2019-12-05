@@ -16,7 +16,7 @@ package com.tongzy.leetcode.solution;
  * Input: [2,2,1,1,1,2,2]
  * Output: 2
  */
-public class Solution_169 {
+public class S169_Majority_Element {
     public int majorityElement(int[] nums) {
         int major = nums[0];
         int count = 1;

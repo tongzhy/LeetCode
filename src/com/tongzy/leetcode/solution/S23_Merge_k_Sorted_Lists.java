@@ -17,7 +17,7 @@ import com.tongzy.leetcode.definition.ListNode;
  * ]
  * Output: 1->1->2->3->4->4->5->6
  */
-public class Solution_23 {
+public class S23_Merge_k_Sorted_Lists {
     public ListNode mergeKLists(ListNode[] lists) {
         if (lists.length == 0) {
             return null;
@@ -65,7 +65,7 @@ public class Solution_23 {
         for (int i = 0; i < 10; i++) {
             lists[9 - i] = new ListNode(i);
         }
-        ListNode listNode = new Solution_23().mergeKLists(lists);
+        ListNode listNode = new S23_Merge_k_Sorted_Lists().mergeKLists(lists);
         System.out.println(listNode);
     }
 }

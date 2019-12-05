@@ -6,7 +6,7 @@ import java.util.PriorityQueue;
 /**
  * 973. K Closest Points to Origin
  */
-public class Solution_973 {
+public class S973_K_Closest_Points_to_Origin {
     public int[][] kClosest(int[][] points, int K) {
         PriorityQueue<Point> queue = new PriorityQueue<>(K);
         for (int i = 0; i < points.length; i++) {

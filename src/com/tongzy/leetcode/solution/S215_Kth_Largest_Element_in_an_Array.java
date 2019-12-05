@@ -21,7 +21,7 @@ import java.util.PriorityQueue;
  * Note:
  * You may assume k is always valid, 1 ≤ k ≤ array's length.
  */
-public class Solution_215 {
+public class S215_Kth_Largest_Element_in_an_Array {
     public int findKthLargest(int[] nums, int k) {
         Arrays.sort(nums);
         return nums[nums.length - k];
@@ -187,7 +187,7 @@ public class Solution_215 {
     public static void main(String[] args) throws Exception {
         int[] nums = {3, 2, 3, 1, 2, 4, 5, 5, 6};
         long t1 = System.currentTimeMillis();
-        verifyAll(nums, Solution_215.class.getMethod("findKthLargest6", int[].class, int.class));
+        verifyAll(nums, S215_Kth_Largest_Element_in_an_Array.class.getMethod("findKthLargest6", int[].class, int.class));
         long t2 = System.currentTimeMillis();
         System.out.println("time: " + (t2 - t1) + " ms");
     }
@@ -195,7 +195,7 @@ public class Solution_215 {
     private static void verifyAll(int[] nums, Method method) throws Exception {
         int[] copy = Arrays.copyOfRange(nums, 0, nums.length);
         Arrays.sort(copy);
-        Solution_215 solution = new Solution_215();
+        S215_Kth_Largest_Element_in_an_Array solution = new S215_Kth_Largest_Element_in_an_Array();
         for (int i = 1; i <= nums.length; i++) {
             int kthLargest = (int) method.invoke(solution, Arrays.copyOfRange(nums, 0, nums.length), i);
             System.out.println("第" + (i) + "大数是" + kthLargest + "  "

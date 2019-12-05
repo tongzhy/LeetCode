@@ -23,7 +23,7 @@ import java.util.List;
  * 0 <= K <= 10000
  * If A.length > 1, then A[0] != 0
  */
-public class Solution_989 {
+public class Solution_989_Add_to_Array_Form_of_Integer {
     public List<Integer> addToArrayForm(int[] A, int K) {
         List<Integer> result = new ArrayList<>();
         for (int i = A.length - 1; i > 0; --i) {

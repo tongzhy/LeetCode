@@ -24,7 +24,7 @@ import java.util.Arrays;
  * <p>
  * Given target = 20, return false.
  */
-public class Solution_240 {
+public class Solution_240_Search_a_2D_Matrix {
     public boolean searchMatrix(int[][] matrix, int target) {
         int m = matrix.length; //m行
         if (m == 0)
@@ -193,7 +193,7 @@ public class Solution_240 {
                 matrix[i][j] = num++;
             }
         }
-        Solution_240 solution = new Solution_240();
+        Solution_240_Search_a_2D_Matrix solution = new Solution_240_Search_a_2D_Matrix();
         for (int i = 0; i < 30; i++) {
             System.out.println(i + "  " + solution.searchMatrix6(matrix, i));
         }
