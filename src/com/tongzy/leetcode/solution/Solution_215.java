@@ -143,16 +143,56 @@ public class Solution_215 {
         return left;
     }
 
+    /**
+     * @param nums an unsorted array
+     * @param k    is always valid, 1 ≤ k ≤ array's length.
+     * @return kth largest element
+     */
+    public int findKthLargest6(int[] nums, int k) {
+        findKthLeast(nums, 0, nums.length - 1, nums.length - k);
+        return nums[nums.length - k];
+    }
+/*
+    Runtime: 0 ms, faster than 100.00% of Java online submissions for Kth Largest Element in an Array.
+    Memory Usage: 36.3 MB, less than 90.67% of Java online submissions for Kth Largest Element in an Array.
+*/
+
+    private void findKthLeast(int[] nums, int start, int end, int Kth) {
+        int left = start;
+        int right = end;
+        int pivot = nums[left] + (nums[right] - nums[left]) / 2;
+        int swap;
+        while (left <= right) {
+            if (nums[left] < pivot) {
+                left++;
+            } else if (nums[right] > pivot) {
+                right--;
+            } else {
+                if (left < right) {
+                    swap = nums[left];
+                    nums[left] = nums[right];
+                    nums[right] = swap;
+                }
+                left++;
+                right--;
+            }
+        }
+        if (Kth >= start && Kth <= right) {
+            findKthLeast(nums, start, right, Kth);
+        } else if (Kth >= left && Kth <= end) {
+            findKthLeast(nums, left, end, Kth);
+        }
+    }
+
     public static void main(String[] args) throws Exception {
         int[] nums = {3, 2, 3, 1, 2, 4, 5, 5, 6};
-        new Solution_215().findKthLargest5(nums, 2);
         long t1 = System.currentTimeMillis();
-        verifyAll(nums, Solution_215.class.getMethod("findKthLargest5", int[].class, int.class));
+        verifyAll(nums, Solution_215.class.getMethod("findKthLargest6", int[].class, int.class));
         long t2 = System.currentTimeMillis();
         System.out.println("time: " + (t2 - t1) + " ms");
     }
 
-    public static void verifyAll(int[] nums, Method method) throws Exception {
+    private static void verifyAll(int[] nums, Method method) throws Exception {
         int[] copy = Arrays.copyOfRange(nums, 0, nums.length);
         Arrays.sort(copy);
         Solution_215 solution = new Solution_215();
