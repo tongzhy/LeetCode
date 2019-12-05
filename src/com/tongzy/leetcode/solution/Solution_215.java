@@ -1,5 +1,6 @@
 package com.tongzy.leetcode.solution;
 
+import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.PriorityQueue;
@@ -65,11 +66,6 @@ public class Solution_215 {
     Memory Usage: 36.5 MB, less than 90.67% of Java online submissions for Kth Largest Element in an Array.
 */
 
-    public static void main(String[] args) {
-        int[] nums = {3, 2, 1, 5, 6, 4};
-        int kthLargest3 = new Solution_215().findKthLargest4(nums, 2);
-        System.out.println(kthLargest3);
-    }
 
     public int findKthLargest4(int[] nums, int k) {
         if (k < nums.length / 2) {
@@ -106,4 +102,64 @@ public class Solution_215 {
     Memory Usage: 36.8 MB, less than 90.67% of Java online submissions for Kth Largest Element in an Array.
 */
 
+    public int findKthLargest5(int[] nums, int k) {
+        int left = 0;
+        int right = nums.length - 1;
+        int index = quickSelect(nums, left, right);
+        while (index != k - 1) {
+            if (index < k - 1) {
+                index = quickSelect(nums, index + 1, right);
+            } else {
+                index = quickSelect(nums, left, index - 1);
+            }
+        }
+        return nums[index];
+    }
+/*
+    Runtime: 27 ms, faster than 29.25% of Java online submissions for Kth Largest Element in an Array.
+    Memory Usage: 37.5 MB, less than 90.16% of Java online submissions for Kth Largest Element in an Array.
+*/
+
+    private int quickSelect(int[] nums, int left, int right) {
+        if (left >= right)
+            return left;
+        int pivot = nums[left];
+        int tmp;
+        int head = left;
+        while (left < right) {
+            if (nums[right] <= pivot) {
+                right--;
+            } else if (nums[left] >= pivot) {
+                left++;
+            } else {
+                tmp = nums[left];
+                nums[left] = nums[right];
+                nums[right] = tmp;
+            }
+        }
+        tmp = nums[head];
+        nums[head] = nums[left];
+        nums[left] = tmp;
+        return left;
+    }
+
+    public static void main(String[] args) throws Exception {
+        int[] nums = {3, 2, 3, 1, 2, 4, 5, 5, 6};
+        new Solution_215().findKthLargest5(nums, 2);
+        long t1 = System.currentTimeMillis();
+        verifyAll(nums, Solution_215.class.getMethod("findKthLargest5", int[].class, int.class));
+        long t2 = System.currentTimeMillis();
+        System.out.println("time: " + (t2 - t1) + " ms");
+    }
+
+    public static void verifyAll(int[] nums, Method method) throws Exception {
+        int[] copy = Arrays.copyOfRange(nums, 0, nums.length);
+        Arrays.sort(copy);
+        Solution_215 solution = new Solution_215();
+        for (int i = 1; i <= nums.length; i++) {
+            int kthLargest = (int) method.invoke(solution, Arrays.copyOfRange(nums, 0, nums.length), i);
+            System.out.println("第" + (i) + "大数是" + kthLargest + "  "
+                    + (kthLargest == copy[nums.length - i]));
+        }
+    }
 }
