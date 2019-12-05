@@ -1,5 +1,6 @@
 package com.tongzy.leetcode.solution;
 
+import java.util.Arrays;
 import java.util.PriorityQueue;
 
 /**
@@ -42,6 +43,57 @@ public class Solution_973 {
         @Override
         public int compareTo(Point o) {
             return Integer.compare(o.distance, this.distance);
+        }
+    }
+
+    /**
+     * @param points -10000 < points[i][0] < 10000 && -10000 < points[i][1] < 10000
+     * @param K      1 <= K <= points.length <= 10000
+     * @return K Closest Points
+     */
+    public int[][] kClosest2(int[][] points, int K) {
+        int length = points.length;
+        int[] distance = new int[length]; // 空间换时间，减少距离计算
+        for (int i = 0; i < length; i++) {
+            distance[i] = points[i][0] * points[i][0] + points[i][1] * points[i][1];
+        }
+        findKthLeast(points, distance, 0, length - 1, K);
+        return Arrays.copyOfRange(points, 0, K);
+    }
+/*
+    Runtime: 4 ms, faster than 99.74% of Java online submissions for K Closest Points to Origin.
+    Memory Usage: 57.5 MB, less than 85.71% of Java online submissions for K Closest Points to Origin.
+*/
+
+    private void findKthLeast(int[][] points, int[] distance, int start, int end, int Kth) {
+        if (start >= end) return;
+        int left = start;
+        int right = end;
+        int pivot = distance[left] + (distance[right] - distance[left]) / 2;
+        int swap;
+        int[] swapPoint;
+        while (left <= right) {
+            if (distance[left] < pivot) {
+                left++;
+            } else if (distance[right] > pivot) {
+                right--;
+            } else {
+                if (left < right) {
+                    swap = distance[left];
+                    distance[left] = distance[right];
+                    distance[right] = swap;
+                    swapPoint = points[left];
+                    points[left] = points[right];
+                    points[right] = swapPoint;
+                }
+                left++;
+                right--;
+            }
+        }
+        if (Kth >= start && Kth <= right) {
+            findKthLeast(points, distance, start, right, Kth);
+        } else if (Kth >= left && Kth <= end) {
+            findKthLeast(points, distance, left, end, Kth);
         }
     }
 }
