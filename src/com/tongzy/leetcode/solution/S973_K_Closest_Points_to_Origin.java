@@ -96,4 +96,49 @@ public class S973_K_Closest_Points_to_Origin {
             findKthLeast(points, distance, left, end, Kth);
         }
     }
+
+    /**
+     * @param points -10000 < points[i][0] < 10000 && -10000 < points[i][1] < 10000
+     * @param K      1 <= K <= points.length <= 10000
+     * @return K Closest Points
+     */
+    public int[][] kClosest3(int[][] points, int K) {
+        findKthClosest(points, 0, points.length - 1, K - 1);
+        return Arrays.copyOfRange(points, 0, K);
+    }
+/*
+    Runtime: 4 ms, faster than 99.74% of Java online submissions for K Closest Points to Origin.
+    Memory Usage: 58.5 MB, less than 77.02% of Java online submissions for K Closest Points to Origin.
+*/
+
+    private void findKthClosest(int[][] points, int start, int end, int Kth) {
+        int left = start;
+        int right = end;
+        int piovt = distance(points[left + (right - left) / 2]);
+        int[] swap;
+        while (left <= right) {
+            if (distance(points[left]) < piovt) {
+                left++;
+            } else if (distance(points[right]) > piovt) {
+                right--;
+            } else {
+                if (left < right) {
+                    swap = points[left];
+                    points[left] = points[right];
+                    points[right] = swap;
+                }
+                left++;
+                right--;
+            }
+        }
+        if (Kth >= start && Kth <= right) {
+            findKthClosest(points, start, right, Kth);
+        } else if (Kth >= left && Kth <= end) {
+            findKthClosest(points, left, end, Kth);
+        }
+    }
+
+    private int distance(int[] points) {
+        return points[0] * points[0] + points[1] * points[1];
+    }
 }
