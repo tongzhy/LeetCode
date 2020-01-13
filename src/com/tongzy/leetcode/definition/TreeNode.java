@@ -1,7 +1,7 @@
 package com.tongzy.leetcode.definition;
 
 public class TreeNode {
-    int val;
+    public int val;
     public TreeNode left;
     public TreeNode right;
 
