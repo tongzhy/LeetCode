@@ -2,10 +2,7 @@ package com.tongzy.leetcode.solution;
 
 import com.tongzy.leetcode.definition.TreeNode;
 
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.Deque;
-import java.util.List;
+import java.util.*;
 
 /**
  * 144. Binary Tree Preorder Traversal
@@ -46,4 +43,17 @@ public class S144_Binary_Tree_Preorder_Traversal {
     Runtime: 1 ms, faster than 34.59% of Java online submissions for Binary Tree Preorder Traversal.
     Memory Usage: 35.5 MB, less than 100.00% of Java online submissions for Binary Tree Preorder Traversal.
 */
+
+    public List<Integer> preorderTraversal2(TreeNode root) {
+        List<Integer> result = new ArrayList<>();
+        Stack<TreeNode> stack = new Stack<>();
+        if (root != null) stack.push(root);
+        while (!stack.isEmpty()) {
+            TreeNode node = stack.pop();
+            result.add(node.val);
+            if (node.right != null) stack.push(node.right);
+            if (node.left != null) stack.push(node.left);
+        }
+        return result;
+    }
 }
